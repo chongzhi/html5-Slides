@@ -1,0 +1,123 @@
+* {
+    margin:0;
+    padding:0;
+    -webkit-transition: all .2s ease-out;
+}
+
+body {
+    background-color: #ddd;
+    font-family:"Microsoft YaHei";
+    text-shadow:1px 1px 1px rgba(0, 0, 0, .1);
+    overflow-x:hidden;
+}
+
+a {
+    color:#000;
+}
+
+.handle {
+    position: absolute;
+    z-index: 10;
+    width: 50px;
+    height:98%;
+    background-color: rgba(0, 0, 0, 0);
+    left: 0;
+    top: 1%;
+    border-radius:0 10px 10px 0;
+    cursor: pointer;
+    opacity: 0;
+    text-align:center;
+    border:none;
+    font:bold 50px/100% Simsun; 
+    color:#555;
+    text-shadow:1px 1px 0 rgba(255, 255, 255, .3);
+}
+.handle:hover {
+    background-color: rgba(0, 0, 0, .2);
+    width:80px;
+    opacity: 1;
+}
+
+
+.tips {
+    position: absolute;
+    top:0px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: default;
+    z-index:11;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 20px;
+    border-radius: 5px;
+    left: 50%;
+    margin-left: -285px;
+    opacity: 0;
+    font-size:14px;
+    width:530px;
+    text-align:center;
+    color:#F8F860;
+}
+
+.tips:hover {
+    background-color: rgba(0, 0, 0, .2);
+    opacity: 1;
+    height: 40px;
+    line-height: 40px;
+
+}
+
+.author {
+    top:auto;
+    bottom:10px;
+    width:200px;
+    margin-left:-100px;
+    color:#000;
+}
+
+.next {
+    left: auto;
+    right: 0;
+    border-radius:10px 0 0 10px;
+}
+.slides {
+    overflow: hidden;
+    width:100%;
+}
+
+.page{
+    position: absolute;
+    width:900px;
+    height:640px;
+    top:50%;
+    left:50%;
+    margin: -320px 0 0 -450px;
+    border-radius: 10px;
+    box-shadow:0 0 10px rgba(0, 0, 0, .5);
+    background-color:#fff;
+    -webkit-transition: all .5s;
+    display: none;
+}
+
+.page.p-current {
+    -webkit-transform: translate3d(0, 0, 0);
+    display:block;
+}
+
+.page.p-past {
+    -webkit-transform: translate3d(-980px, 0, 0);
+    display:block;
+}
+
+.page.p-past-far {
+    -webkit-transform: translate3d(-1960px, 0, 0);
+    display:block;
+}
+
+.page.p-next {
+    -webkit-transform: translate3d(980px, 0, 0);
+    display:block;
+}
+.page.p-next-far {
+    -webkit-transform: translate3d(1960px, 0, 0);
+    display:block;
+}

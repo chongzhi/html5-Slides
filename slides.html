@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>Slides</title>
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+    <button type="button" class="prev handle" id="prev">&lt;</button>
+    <div class="tips">F11进入全屏，[Enter,Space,&#8594;,&#8595;]翻下一页，[Esc,&#8592;,&#8593;]翻上一页</div>
+    <section class="slides" id="slides">
+
+        <!-- 
+            要添加ppt页面，只需复制article标签一份，
+            article内部可随意修改，包括样式标签等 
+        -->
+
+        <!-- 页面区 -->
+        <article class="page">
+            <h1>这里是页面1</h1>
+            <p>正文内容请添加到article标签内部</p>
+        </article>
+        <!-- /页面区 -->
+
+        <!-- 页面区 -->
+        <article class="page" >
+            <h1>这里是页面2</h1>
+        </article>
+        <!-- /页面区 -->
+
+        <!-- 页面区 -->
+        <article class="page" >
+            <h1>这里是页面3</h1>
+        </article>
+        <!-- /页面区 -->
+
+        <!-- 页面区 -->
+        <article class="page" >
+            <h1>这里是页面4</h1>
+        </article>
+        <!-- /页面区 -->
+
+        <!-- 页面区 -->
+        <article class="page">
+            <h1>这里是页面5</h1>
+        </article>
+        <!-- /页面区 -->
+
+    </section>
+    <div class="tips author">author: Der ( <a target="_blank" href="http://www.ueder.net" title="ueder">ueder.net</a> ) </div>
+    <button type="button" class="next handle" id="next">&gt;</button>
+
+    <!-- 幻灯片脚本 -->
+    <script src="slides.js"></script>
+    <script type="text/javascript">
+        //幻灯片
+        new Slides();
+    </script>
+</body>
+</html>
