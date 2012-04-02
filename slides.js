@@ -1,3 +1,8 @@
+/**
+ * Author : Der (http://www.ueder.net)
+ * Date : 2012/04/02
+ */
+
 //window 以参数方式传进来，沙箱模式，undefined定为局部变量，提高性能
 (function(window, undefined) { 
 
