@@ -4,7 +4,7 @@
  */
 
 //window 以参数方式传进来，沙箱模式，undefined定为局部变量，提高性能
-(function(window, undefined) { 
+;(function(window, undefined) { 
 
     //使document指向参数window里的document
     var document = window.document,
