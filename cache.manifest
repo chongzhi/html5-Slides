@@ -1,0 +1,11 @@
+CACHE MANIFEST    
+# VERSION 0.3    
+# 直接缓存的文件   
+CACHE:  slides.html   
+slides.js
+slides.css
+# 需要在时间在线的文件   
+NETWORK:   
+/wp-admin/    
+# 替代方案   
+FALLBACK:  / 
