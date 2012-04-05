@@ -2,6 +2,10 @@
     margin:0;
     padding:0;
     -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    -ms-transition: all .2s ease-out;
+    transition: all .2s ease-out;
 }
 
 body {
@@ -12,7 +16,11 @@ body {
 }
 
 a {
-    color:#000;
+    color:#2DA845;
+}
+
+a:hover {
+    color: #36c;
 }
 
 .handle {
@@ -55,9 +63,12 @@ a {
     font-size:14px;
     width:530px;
     text-align:center;
-    color:#F8F860;
+    color:#000;
 }
 
+.tips a {
+    color: #000;
+}
 .tips:hover {
     background-color: rgba(0, 0, 0, .2);
     opacity: 1;
@@ -73,7 +84,6 @@ a {
     margin-left:-100px;
     color:#000;
 }
-
 
 .next {
     left: auto;
@@ -92,33 +102,167 @@ a {
     top:50%;
     left:50%;
     margin: -320px 0 0 -450px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
     border-radius: 10px;
+    -webkit-box-shadow:0 0 10px rgba(0, 0, 0, .5);
+    -moz-box-shadow:0 0 10px rgba(0, 0, 0, .5);
     box-shadow:0 0 10px rgba(0, 0, 0, .5);
     background-color:#fff;
     -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    -ms-transition: all .5s;
+    transition: all .5s;
     display: none;
 }
 
 .page.p-current {
-    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
     display:block;
 }
 
 .page.p-past {
-    -webkit-transform: translate3d(-980px, 0, 0);
+    -webkit-transform: translate(-980px, 0);
+    -moz-transform: translate(-980px, 0);
+    -o-transform: translate(-980px, 0);
+    -ms-transform: translate(-980px, 0);
+    transform: translate(-980px, 0);
     display:block;
 }
 
 .page.p-past-far {
-    -webkit-transform: translate3d(-1960px, 0, 0);
-    display:block;
+   
+    -webkit-transform:  translate(-1960px,0);
+     -moz-transform:  translate(-1960px,0);
+     -o-transform:  translate(-1960px,0);
+     -ms-transform:  translate(-1960px,0);
+     transform:  translate(-1960px,0);
+     display: block;
+     }
+
+ .page.p-next {
+    -webkit-transform: translate(980px, 0);
+    -moz-transform: translate(980px, 0);
+    -o-transform: translate(980px, 0);
+    -ms-transform: translate(980px, 0);
+    transform: translate(980px, 0);
+    display: block;
 }
 
-.page.p-next {
-    -webkit-transform: translate3d(980px, 0, 0);
-    display:block;
-}
 .page.p-next-far {
-    -webkit-transform: translate3d(1960px, 0, 0);
-    display:block;
+    -webkit-transform: translate(1960px, 0);
+    -moz-transform: translate(1960px, 0);
+    -o-transform: translate(1960px, 0);
+    -ms-transform: translate(1960px, 0);
+    transform: translate(1960px, 0);
+    display: block;
+    
+}
+
+
+
+/*content style*/
+.headline {
+    font-size:50px;
+    color: #2DA845;
+    margin-top: 280px;
+}
+.t2 {
+    margin-bottom: .63em;
+}
+.content{
+    padding:30px 50px;
+    position: relative;
+    font-size: 24px;
+    color: #555;
+}
+.chrome {
+    position: absolute;
+    top:50px;
+    right:250px;
+    z-index: -1;
+    width:250px;
+
+}
+.canary {
+    -webkit-transform: translate(120px, 0);
+    -moz-transform: translate(120px, 0);
+    -o-transform: translate(120px, 0);
+    -ms-transform: translate(120px, 0);
+    transform: translate(120px, 0);
+    z-index: -2;
+}
+
+.chromium {
+    -webkit-transform: translate(240px, 0);
+    -moz-transform: translate(240px, 0);
+    -o-transform: translate(240px, 0);
+    -ms-transform: translate(240px, 0);
+    transform: translate(240px, 0);
+    z-index: -3;
+}
+ul, ol{
+    padding-left: 1.5em;
+    line-height: 1.8;
+    margin-bottom: 1em;
+}
+p {
+    margin-bottom: .53em;
+    line-height:1.5;
+}
+li p {
+    padding-left: 2em;
+    line-height : 1.2;
+    font-size:20px;
+}
+ul li {
+    list-style:none;
+    position: relative;
+}
+ul li:before {
+    content: '.';
+    font-size: 1.6em;
+    position: absolute;
+    left: -.53em;
+    top: -.6em;
+}
+.pic-effect{
+    border-radius: 5px;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.3);
+}
+.c-red {
+    color:red;
+}
+.c-green {
+    color: green;
+}
+.c-blue {
+    color: #06c;
+}
+.s-list {
+    font-size:16px;
+}
+
+.fs-14 {
+    font-size: 14px;
+}
+
+.fs-16 {
+    font-size: 16px;
+}
+
+.fs-18 {
+    font-size: 18px;
+}
+
+.fs-20 {
+    font-size: 20px;
+}
+.c-grey {
+    color:#999;
 }
