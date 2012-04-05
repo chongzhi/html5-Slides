@@ -3,7 +3,7 @@
  * Date : 2012/04/02
  */
 
-//window 以参数方式传进来，沙箱模式，undefined定为局部变量，提高性能
+//window 以参数方式传进来，沙箱模式，undefined定为局部变量，提高性能, 以及防止被恶意修改
 ;(function(window, undefined) { 
 
     //使document指向参数window里的document
