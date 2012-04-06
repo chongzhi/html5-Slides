@@ -10,11 +10,13 @@
 
 body {
     background-color: #ddd;
-    font-family:"Microsoft YaHei";
+    font-family:"Verdana", "monaco", "Microsoft YaHei";
     text-shadow:1px 1px 1px rgba(0, 0, 0, .1);
     overflow-x:hidden;
 }
-
+img {
+    vertical-align: middle;
+}
 a {
     color:#2DA845;
 }
@@ -245,7 +247,7 @@ ul li:before {
     color: #06c;
 }
 .s-list {
-    font-size:16px;
+    font-size:18px;
 }
 
 .fs-14 {

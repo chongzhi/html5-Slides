@@ -91,7 +91,9 @@
             // onhashchange handle 哈希驱动事件
             // 所有的上一页下一页跳转到几页都只改变hash值，然后由hashchange事件驱动页面跳转
             window.addEventListener('hashchange', function(e) {
-                self.goto(self._getPageFromHash());
+                var cp = self._getPageFromHash();
+                self.currentPage = cp;
+                self.goto(cp);
             }, false);
 
             //添加键盘事件
