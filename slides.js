@@ -14,7 +14,7 @@
     /**
      * Slides 构造函数
      */
-    var Slides = function() {
+    var Slides = function(config) {
 
         //支持 Slides()直接调用
         if (!(this instanceof Slides)) {
@@ -24,10 +24,12 @@
         //统一配置在这里
         var container = '#slides', //slides的容器选择器
             pages = '.page', //所有slide页选择器
-            pageClass = 'page', //slide页的className
             hashPrefix = 'slide-', //hash里的前缀，后面为页值
             prev = '#prev', //前一页按钮
-            next = '#next'; //后一页按钮
+            next = '#next', //后一页按钮
+            changeBtn = '#changeType', //切换风格的按钮
+            changeTypes = ['slides', 'slides2'], //切换风格的class
+            typeArr = ['p-current', 'p-past', 'p-past-far', 'p-next', 'p-next-far'];
 
         //程序内部数据
         this.container = document.querySelector(container); //slides的容器
@@ -37,7 +39,11 @@
         this.hashPrefix = hashPrefix; //hash前缀
         this.currentPage = 1; //默认在第一页
         this.totalPages = this.pages.length; //ppt总页数
-        this.pageClass = pageClass;
+        this.changeBtn = document.querySelector(changeBtn); //
+        this.changeTypes = changeTypes; //切换type数组
+        this.typeCount = 0; //
+        this.curType = this.changeTypes[this.typeCount]; //默认切换type为第一个
+        this.typeArr = typeArr;
 
         this.init();
         
@@ -64,6 +70,7 @@
 
             self.bindUI(); //用户事件绑定
             self.currentPage = self._getPageFromHash(); //从hash获取在第几页
+            self._emptyClass();//先清空设置过的class
             self.goto(self.currentPage); //跳转到第几页
             self._setPageToHash(self.currentPage); //设置hash状态
 
@@ -93,7 +100,16 @@
             window.addEventListener('hashchange', function(e) {
                 var cp = self._getPageFromHash();
                 self.currentPage = cp;
+                self._emptyClass(); //先清空设置过的class
                 self.goto(cp);
+            }, false);
+
+            //
+            this.changeBtn.addEventListener('click', function(e) {  
+                e.preventDefault();
+
+                self._changeType();
+                self.container.className = self.curType;
             }, false);
 
             //添加键盘事件
@@ -119,6 +135,19 @@
 
             }, false)
 
+        },
+
+        /**
+         * 转换切换风格
+         * @return {undefined} 
+         */
+        _changeType: function() {   
+            var self = this;
+
+            self.typeCount = (self.typeCount === self.changeTypes.length - 1)
+                ? 0 : self.typeCount + 1;
+
+            self.curType = self.changeTypes[self.typeCount];
         },
 
         /**
@@ -157,6 +186,26 @@
         },
 
         /**
+         * 清空class
+         * @return {undefined} 
+         */
+        _emptyClass: function() {
+            var classNameList = this.typeArr,
+                i = 0,
+                len = this.totalPages,
+                l = classNameList.length,
+                pages = this.pages;
+
+            for (; i < len; i++){
+                var el = pages[i];
+
+                for (var j = 0; j < l; j++) {
+                    el.classList.remove(classNameList[j]);
+                }
+            }            
+        },
+
+        /**
          * 跳转到第n页
          * @param  {number} n 跳转到的页数
          * @return {undefined}   
@@ -164,13 +213,14 @@
         goto: function(n) {
             var self = this,
                 pages = self.pages,
-                pageClass = self.pageClass,
                 cur = n - 1, //当前页, 转为0起始
                 past = n - 2, //上一页
                 pastFar = n - 3, //上上一页
                 next = n, //下一页
                 nextFar = n + 1, //下下一页
-                i = 0, len = self.totalPages;
+                i = 0, len = self.totalPages,
+                classNameList = this.typeArr;
+
 
             //改变当前slide以及前后各两个slide的className，
             //再利用css3 的translate偏离位置 + transition动画
@@ -179,27 +229,24 @@
 
                 switch (i) {
                     case cur: 
-                        page.className = pageClass + ' p-current';
+                        page.classList.add(classNameList[0]);
                         break;
 
                     case past:
-                        page.className = pageClass + ' p-past';
+                        page.classList.add(classNameList[1]);
                         break;
 
                     case pastFar:
-                        page.className = pageClass + ' p-past-far';
+                        page.classList.add(classNameList[2]);
                         break;
 
                     case next:
-                        page.className = pageClass + ' p-next';
+                        page.classList.add(classNameList[3]);
                         break;
 
                     case nextFar:
-                        page.className = pageClass + ' p-next-far';
+                        page.classList.add(classNameList[4]);
                         break;
-
-                    default:
-                        page.className = pageClass;
                 }
             }
         },
