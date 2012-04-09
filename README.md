@@ -1,6 +1,6 @@
 # HTML5 Slides 
 
-基于html5的类PPT展示 (只支持chrome) 
+基于html5的类PPT展示
 
 * 只包括.html .css .js三个文件
 * 样式可自行修改定义
