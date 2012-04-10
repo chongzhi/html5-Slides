@@ -95,7 +95,7 @@
             self.container.className = self.curType; //
             self.currentPage = self._getPageFromHash(); //从hash获取在第几页
             self._emptyClass();//先清空设置过的class
-            self.goto(self.currentPage); //跳转到第几页
+            self.gotoPage(self.currentPage); //跳转到第几页
             self._setPageToHash(self.currentPage); //设置hash状态
 
 
@@ -126,7 +126,7 @@
                 var cp = self._getPageFromHash();
                 self.currentPage = cp;
                 self._emptyClass(); //先清空设置过的class
-                self.goto(cp);
+                self.gotoPage(cp);
             }, false);
 
             //切换风格
@@ -235,7 +235,7 @@
          * @param  {number} n 跳转到的页数
          * @return {undefined}   
          */
-        goto: function(n) {
+        gotoPage: function(n) {
             var self = this,
                 pages = self.pages,
                 cur = n - 1, //当前页, 转为0起始
