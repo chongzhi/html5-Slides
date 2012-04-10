@@ -3,10 +3,17 @@
 基于html5的类PPT展示
 
 * 只包括.html .css .js三个文件
+<<<<<<< HEAD
 * 样式可aaccc自行aaadf修vvvadsf改定义
 * 键盘左右键控制上下页
 * 内容请填充在article标签内部
 * 增加切换风格
+=======
+* 样式可自行修asdfasdf改定义
+* 键盘左右asdfasdf键控制上下页
+* 内容请填vvvv充在article标签内部
+* 增加切vvasdf换风格
+>>>>>>> 355025525ff6185eece33f9c4c7818eef31fcf8a
 * 可在样式表里添加相应的切换样式，添加到参数changeTypes数组里，即可增加自定义的切换风格
 
 [演示demo](http://ueder.net/html5-Slides/slides.html)
