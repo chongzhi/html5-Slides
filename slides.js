@@ -12,38 +12,61 @@
         location = document.location;
 
     /**
+     * //扩展对象(默认值替换)
+     * @param  {object} target 默认值对象
+     * @param  {object} obj    待扩展的对象
+     * @return {object}        返回扩展后的对象
+     */
+    var extend = function (target, obj) {
+        if (obj) {
+            for (var i in target) {
+                if ((typeof obj[i]) === "undefined") {
+                    obj[i] = target[i];
+                }
+            }
+            return obj;
+        } else {
+            return target;
+        }
+    }
+
+    /**
      * Slides 构造函数
      */
     var Slides = function(config) {
 
         //支持 Slides()直接调用
         if (!(this instanceof Slides)) {
-            return new Slides();
+            return new Slides(config);
         }
 
-        //统一配置在这里
-        var container = '#slides', //slides的容器选择器
-            pages = '.page', //所有slide页选择器
-            hashPrefix = 'slide-', //hash里的前缀，后面为页值
-            prev = '#prev', //前一页按钮
-            next = '#next', //后一页按钮
-            changeBtn = '#changeType', //切换风格的按钮
-            changeTypes = ['slides', 'slides2'], //切换风格的class
-            typeArr = ['p-current', 'p-past', 'p-past-far', 'p-next', 'p-next-far'];
+        //默认配置
+        config = extend({
+            container: '#slides', //slides的容器选择器
+            pages: '.page', //所有slide页选择器
+            hashPrefix: 'slide-', //hash里的前缀，后面为页值
+            prev: '#prev', //前一页按钮
+            next: '#next', //后一页按钮
+            changeBtn: '#changeType', //切换风格的按钮
+            changeTypes: ['slides', 'slides2'], //切换风格的class
+            typeArr: ['p-current', 'p-past', 'p-past-far', 'p-next', 'p-next-far'],
+            typeCount: 0 //默认的切换风格，对应changeTypes里的数组
+        }, config);
 
-        //程序内部数据
-        this.container = document.querySelector(container); //slides的容器
-        this.pages = this.container.querySelectorAll(pages); //所有slide页
-        this.prevBtn = document.querySelector(prev); //上一页按钮
-        this.nextBtn = document.querySelector(next); //下一页按钮
-        this.hashPrefix = hashPrefix; //hash前缀
-        this.currentPage = 1; //默认在第一页
+
+        //挂载内部参数
+        this.container = document.querySelector(config.container); //slides的容器
+        this.pages = this.container.querySelectorAll(config.pages); //所有slide页
+        this.prevBtn = document.querySelector(config.prev); //上一页按钮
+        this.nextBtn = document.querySelector(config.next); //下一页按钮
+        this.hashPrefix = config.hashPrefix; //hash前缀
+        this.currentPage = null; // 当前页
         this.totalPages = this.pages.length; //ppt总页数
-        this.changeBtn = document.querySelector(changeBtn); //
-        this.changeTypes = changeTypes; //切换type数组
-        this.typeCount = 0; //
+        this.changeBtn = document.querySelector(config.changeBtn); //
+        this.changeTypes = config.changeTypes; //切换type数组
+        this.typeCount = config.typeCount; //
         this.curType = this.changeTypes[this.typeCount]; //默认切换type为第一个
-        this.typeArr = typeArr;
+        this.typeArr = config.typeArr;
 
         this.init();
         
@@ -69,10 +92,12 @@
             var self = this;
 
             self.bindUI(); //用户事件绑定
+            self.container.className = self.curType; //
             self.currentPage = self._getPageFromHash(); //从hash获取在第几页
             self._emptyClass();//先清空设置过的class
             self.goto(self.currentPage); //跳转到第几页
             self._setPageToHash(self.currentPage); //设置hash状态
+
 
         },
 
@@ -104,7 +129,7 @@
                 self.goto(cp);
             }, false);
 
-            //
+            //切换风格
             this.changeBtn.addEventListener('click', function(e) {  
                 e.preventDefault();
 

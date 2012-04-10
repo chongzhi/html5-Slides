@@ -116,7 +116,11 @@
     <script src="slides.js"></script>
     <script type="text/javascript">
         //幻灯片
-        new Slides();
+        //可在样式表里添加相应的切换样式，添加到changeTypes数组里
+        new Slides({
+            changeTypes: ['slides', 'slides2'], //切换的风格样式
+            typeCount: 0 //默认第几种风格
+        });
     </script>
 </body>
 </html>
